@@ -1,0 +1,27 @@
+1. C++:
+int Solution::maximumGap(const vector<int> &A) {
+    int i,j;
+    int n = A.size();
+    int *lmin = new int[n];
+    int *rmax = new int[n];
+    lmin[0]=A[0];
+    for(i=1;i<n;i++)
+        lmin[i]=min(lmin[i-1],A[i]);
+    rmax[n-1]=A[n-1];
+    for(i=n-2;i>=0;i--)
+        rmax[i]=max(rmax[i+1],A[i]);
+    i=0;
+    j=0;
+    int diff=-1;
+    while(i<n && j<n)
+    {
+        if(lmin[i]<=rmax[j])
+        {
+            diff = max(diff,j-i);
+            j++;
+        }
+        else
+            i++;
+    }
+    return diff;
+}
