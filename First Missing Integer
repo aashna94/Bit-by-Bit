@@ -1,0 +1,20 @@
+1. C++:
+int Solution::firstMissingPositive(vector<int> &A) {
+    int n=A.size(),i,pos;
+    for(i=0;i<n;i++) {
+        if(A[i]>0 && A[i]<=n)
+        {
+            pos=A[i]-1;
+            if(A[i]!=A[pos]) {
+                swap(A[i],A[pos]);
+                i--;
+            }
+        }
+    }
+    for(i=0;i<n;i++)
+    {
+     if (A[i] != i + 1) 
+        return (i + 1);
+    }
+    return n + 1;
+}
