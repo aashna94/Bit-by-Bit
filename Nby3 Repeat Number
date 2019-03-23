@@ -1,0 +1,42 @@
+1. C++:
+int findCan(const vector<int> &A, int n)
+{
+    int maj_index = 0, count = 1; 
+    for (int i = 1; i < n; i++) 
+    { 
+        if (A[maj_index] == A[i]) 
+            count++; 
+        else
+            count--; 
+        if (count == 0) 
+        { 
+            maj_index = i; 
+            count = 1; 
+        } 
+    } 
+    return A[maj_index]; 
+}
+int isMaj(const vector<int> &A, int n, int can)
+{
+    int i,cnt=0;
+    for(i=0;i<n;i++)
+        if(A[i]==can)
+            cnt++;
+    if(cnt>(n/3))
+        return can;
+    else
+        return -1;
+}
+int Solution::repeatedNumber(const vector<int> &A) {
+    // Do not write main() function.
+    // Do not read input, instead use the arguments to the function.
+    // Do not print the output, instead return values as specified
+    // Still have a doubt. Checkout www.interviewbit.com/pages/sample_codes/ for more details
+    int i;
+    int n=A.size();
+    int can=findCan(A,n);
+    cout<<can;
+    int res=isMaj(A,n,can);
+    return res;
+    
+}
