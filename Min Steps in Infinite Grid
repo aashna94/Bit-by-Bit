@@ -1,0 +1,16 @@
+1. C++:
+int shortest(int a, int b, int c, int d)
+{
+    int x,y;
+    x=abs(a-c);
+    y=abs(b-d);
+    
+    return max(x,y);
+}
+int Solution::coverPoints(vector<int> &A, vector<int> &B) {
+    int n=A.size();
+    int cnt=0,i;
+    for(i=0;i<n-1;i++)
+        cnt+=shortest(A[i],B[i],A[i+1],B[i+1]);
+    return cnt;
+}
