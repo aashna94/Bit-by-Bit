@@ -1,0 +1,21 @@
+1. C++:
+vector<vector<int> > Solution::solve(int numRows) {
+    vector<vector<int> > res;
+        if(numRows <= 0)
+            return res;
+        vector<int> l1(1,1);
+        res.push_back(l1);
+        for(int i = 1; i<numRows; ++i)
+        {
+            // number of elements = i+1
+            vector<int> l(l1);
+            l.push_back(1);
+            for(int j = 1; j<l.size()-1; ++j)
+            {
+                l[j] = l1[j] + l1[j-1];
+            }
+            l1 = l;
+            res.push_back(l);
+        }
+        return res;
+    }
