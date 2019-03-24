@@ -1,0 +1,26 @@
+1. C++:
+vector<int> Solution::getRow(int k) {
+    int i,j,n;
+    vector<int>res;
+    n=k+2;
+    int m[n][n];
+    for(i=0;i<n;i++)
+        for(j=0;j<n;j++)
+            m[i][j]=0;
+    m[0][0]=1;
+    for(i=1;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            if(j==0)
+                m[i][j]=m[i-1][j];
+            else
+                m[i][j]=m[i-1][j]+m[i-1][j-1];
+        }
+    }
+    for(i=0;i<n;i++)
+        for(j=0;j<n;j++)
+            if(i==k && m[i][j]!=0)
+                res.push_back(m[i][j]);
+    return res;
+}
