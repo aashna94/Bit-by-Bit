@@ -1,0 +1,31 @@
+1. C++:
+int util(const vector<int> &A, int key, int l, int r)
+{
+    if(l>r)
+        return -1;
+    int mid=(l+r)/2;
+    if(A[mid]==key)
+        return mid;
+    if(A[l]<A[mid]){
+        if(A[l]<=key && key<=A[mid])
+            return util(A,key,l,mid-1);
+        else
+            return util(A,key,mid+1,r);
+    }
+    else {
+        if(A[mid]<=key && key<=A[r])
+            return util(A,key,mid+1,r);
+        else
+            return util(A,key,l,mid-1);
+    }
+    return -1;
+}
+int Solution::search(const vector<int> &A, int B) {
+    // Do not write main() function.
+    // Do not read input, instead use the arguments to the function.
+    // Do not print the output, instead return values as specified
+    // Still have a doubt. Checkout www.interviewbit.com/pages/sample_codes/ for more details
+    int n=A.size();
+    
+    return util(A,B,0,n-1);
+}
