@@ -1,0 +1,31 @@
+1. C++:
+int minLengthString(vector<string> &A, int n) {
+    string cur=A[0];
+    int i;
+    int minLen=cur.length();
+    for(i=1;i<n;i++)
+    {
+        if(A[i].length()<minLen)
+            minLen=A[i].length();
+    }
+    return minLen;
+}
+string Solution::longestCommonPrefix(vector<string> &A) {
+    int i,j,n=A.size();
+    int len=minLengthString(A,n);
+    char cur;
+    string res;
+    for(i=0;i<len;i++) {
+        cur=A[0][i];
+        for(j=1;j<n;j++) {
+            if(cur!=A[j][i])
+                return res;
+        }
+        
+            res.push_back(cur);
+        
+    }
+
+        return res;
+
+}
